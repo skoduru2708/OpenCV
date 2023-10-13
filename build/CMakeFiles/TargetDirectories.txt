@@ -1,9 +1,0 @@
-C:/dev/sk/cv/test/build/CMakeFiles/Experimental.dir
-C:/dev/sk/cv/test/build/CMakeFiles/Nightly.dir
-C:/dev/sk/cv/test/build/CMakeFiles/Continuous.dir
-C:/dev/sk/cv/test/build/CMakeFiles/NightlyMemoryCheck.dir
-C:/dev/sk/cv/test/build/CMakeFiles/OpenCVTest.dir
-C:/dev/sk/cv/test/build/CMakeFiles/PACKAGE.dir
-C:/dev/sk/cv/test/build/CMakeFiles/RUN_TESTS.dir
-C:/dev/sk/cv/test/build/CMakeFiles/ALL_BUILD.dir
-C:/dev/sk/cv/test/build/CMakeFiles/ZERO_CHECK.dir
