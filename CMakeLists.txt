@@ -4,7 +4,6 @@ project(OpenCVTest VERSION 0.1.0 LANGUAGES C CXX)
 include(CTest)
 enable_testing()
 
-#set(OpenCV_DIR  "C:\\dev\\tools\\OpenCV")
 find_package(OpenCV REQUIRED)
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
