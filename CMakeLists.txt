@@ -8,7 +8,7 @@ set(OpenCV_DIR  "C:\\dev\\tools\\OpenCV")
 find_package(OpenCV REQUIRED)
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
-add_executable(OpenCVTest ch5.cpp)
+add_executable(OpenCVTest ch6.cpp)
 
 target_link_libraries(OpenCVTest ${OpenCV_LIBS})
 
