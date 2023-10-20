@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-    string img_path = "../../Resources/mountain.jpg";
+    string img_path = "../Resources/mountain.jpg";
     Mat img = imread(img_path);
     Mat img_gray, img_blur, img_canny, img_dilation, img_erode;
 
