@@ -2,7 +2,12 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
-#include <unistd.h>
+
+#ifdef _WIN32
+#include <windows.h>
+#elif __APPLE__ || __MACH__
+// include Apple related
+#endif
 
 using namespace cv;
 using namespace std;
@@ -12,20 +17,23 @@ string getOsName();
 /// Color detection /////
 int main(int Args, char *Arguments[], char *Env[])
 {
-    string osName = getOsName();
+    string os_name = getOsName();
 
-    string img_path = (osName == "MacOSX") ? "/Users/srinivas.koduru/Dev/opencv/learn/test/OpenCV/Resources/" : "../../Resources/";
-    img_path += "shapes.png";
+    string img_path;
+    img_path = (os_name == "MacOSX") ? "/Users/srinivas.koduru/Dev/opencv/learn/test/OpenCV/Resources/" : "../../Resources/";
+    img_path += "/shapes.png";
 
-    int hmin = 0, smin = 0, vmin = 0, input = 1000;
+    int hmin = 0, smin = 0, vmin = 0;
     int hmax = 179, smax = 240, vmax = 255;
+
+    bool cont = true;
 
     Mat img, img_HSV, img_mask;
 
     img = imread(img_path);
     cvtColor(img, img_HSV, COLOR_BGR2HSV);
 
-    namedWindow("Trackbars", 1);
+    namedWindow("Trackbars", (640, 200));
     createTrackbar("Hue Min", "Trackbars", &hmin, 179);
     createTrackbar("Hue Max", "Trackbars", &hmax, 179);
     createTrackbar("Sat Min", "Trackbars", &smin, 255);
@@ -33,8 +41,11 @@ int main(int Args, char *Arguments[], char *Env[])
     createTrackbar("Val Min", "Trackbars", &vmin, 255);
     createTrackbar("Val Max", "Trackbars", &vmax, 255);
 
-    while (input > 0)
+    while (cont)
     {
+        if (GetKeyState(VK_ESCAPE) & 0x8000)
+            cont = false;
+
         Scalar lower(hmin, smin, vmin);
         Scalar upper(hmax, smax, vmax);
         inRange(img_HSV, lower, upper, img_mask);
@@ -42,8 +53,7 @@ int main(int Args, char *Arguments[], char *Env[])
         imshow("Image", img);
         imshow("HSV Image", img_HSV);
         imshow("Masked Image", img_mask);
-        waitKey(2);
-        input--;
+        waitKey(1);
     }
     return 0;
 }
